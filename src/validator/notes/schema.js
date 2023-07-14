@@ -1,4 +1,5 @@
-const Joi = require('joi");
+// eslint-disable-next-line import/no-extraneous-dependencies
+const Joi = require('joi');
 
 const NotePayloadSchema = Joi.object({
   title: Joi.string().required(),

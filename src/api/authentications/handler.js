@@ -17,6 +17,17 @@ class AuthenticatiosHandler {
 
 			const accessToken = this._tokenManager.generateAccessToken({ id });
 			const refreshToken = this._tokenManager.generateRefreshToken({ id });
+
+			await this._authenticationsService.addRefreshToken(refreshToken);
+
+			const response = h.response({
+				status: "success",
+				message: "Authentication berhasil ditambahkan",
+				data: {
+					accessToken,
+					refreshToken,
+				},
+			});
 		} catch (e) {
 			if (e instanceof ClientError) {
 				const response = h.response({
